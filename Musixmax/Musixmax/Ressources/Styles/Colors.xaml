@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xaml-comp compile="true"?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+	<Color x:Key="DarkMainBackgroundColor">#10131B</Color>
+	<Color x:Key="DarkSecondaryBackgroundColor">#1C222E</Color>
+	<Color x:Key="DarkPrimaryTextColor">#fff</Color>
+	<Color x:Key="DarkIconColor">#C4C6D0</Color>
+	<Color x:Key="DarkSecondaryTextColor">#8C8C91</Color>
+	<Color x:Key="DarkTabFocusedTextColor">#fff</Color>
+	<Color x:Key="LightMainBackgroundColor">#EEF0F3</Color>
+	<Color x:Key="LightSecondaryBackgroundColor">#FCFCFF</Color>
+	<Color x:Key="LightPrimaryTextColor">#010102</Color>
+	<Color x:Key="LightIconColor">#010102</Color>
+	<Color x:Key="LightSecondaryTextColor">#8C8C91</Color>
+</ResourceDictionary>

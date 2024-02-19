@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Musixmax.CustomControls.AlbumsItempage"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Name="this">
+
+
+    <Grid RowDefinitions="*"
+          ColumnDefinitions="*" 
+          BindingContext="{x:Reference this}">
+
+        <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal"
+                     Grid.ColumnSpan="3">
+            <Image Source="cover" Aspect="AspectFit" HeightRequest="150" xct:CornerRadiusEffect.CornerRadius="30">
+            </Image>
+            <Label x:Name="NamoOfAlbum" Text="{Binding AlbumName}" Style="{StaticResource PrimaryLabelStyle}"
+                   HorizontalOptions="Center"/>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="AlbumArtist" Text="{Binding AlbumArtiste}" Style="{StaticResource SecondaryLabelStyle}" Margin="20,0,0,0"/>
+                <Label Text=""/>
+                <Label Text="|" Style="{StaticResource SecondaryLabelStyle}"/>
+                <Label Text=""/>
+                <Label Text="{Binding NumberOfTracks}" 
+                       Style="{StaticResource SecondaryLabelStyle}"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+            </StackLayout>
+        </StackLayout>
+        
+    </Grid>
+</ContentView>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:icon="clr-namespace:Musixmax.Ressources"
+             x:Class="Musixmax.CustomControls.TracksItempage"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Name="this">
+
+    <StackLayout BindingContext="{x:Reference this}">
+        <Frame HeightRequest="60"  BackgroundColor="{AppThemeBinding Dark={StaticResource DarkSecondaryBackgroundColor}, 
+                                                                     Light={StaticResource LightSecondaryBackgroundColor}}">
+            <Grid ColumnDefinitions="auto, 5, *, *"
+                  RowSpacing="0.5">
+                <Image Grid.Column="0"
+                       Grid.Row="0"
+                       Grid.ColumnSpan="2"
+                       Aspect="AspectFill"
+                       HorizontalOptions="StartAndExpand"
+                       Source="cover"
+                       xct:CornerRadiusEffect.CornerRadius="20"/>
+
+                <StackLayout Orientation="Vertical" Grid.Column="2"
+                             Grid.ColumnSpan="2">
+                    <Label x:Name="Artiste" Text="{Binding Artist}" 
+                           HorizontalTextAlignment="Start"
+                           VerticalTextAlignment="Start"
+                           Style="{StaticResource PrimaryLabelStyle}"/>
+                    <Label x:Name="Titre" Text="{Binding Title}" HorizontalTextAlignment="Start" 
+                           VerticalTextAlignment="End"
+                           Style="{StaticResource SecondaryLabelStyle}"/>
+                </StackLayout>
+
+                <Label Grid.Column="3" Grid.Row="0"
+                       Text="{x:Static icon:IconFont.DotsVertical}"
+                       Style="{StaticResource MaterialDesignIcon}"
+                       HorizontalTextAlignment="End"/>
+
+            </Grid>
+        </Frame>
+    </StackLayout>
+</ContentView>

@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Musixmax.Pages.MainPage"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:icon="clr-namespace:Musixmax.Ressources"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+             xmlns:cc="clr-namespace:Musixmax.CustomControls"
+             xmlns:pagemodels="clr-namespace:Musixmax.PageModels" 
+             x:DataType="pagemodels:MainPageModel"
+             BackgroundColor="{AppThemeBinding Dark={StaticResource DarkMainBackgroundColor}, 
+                                               Light={StaticResource LightMainBackgroundColor}}"
+             NavigationPage.HasNavigationBar="False">
+
+
+    <Grid RowDefinitions="auto, 10 ,auto">
+
+        <StackLayout Grid.Row="0" Orientation="Horizontal" Padding="10">
+            <Label Text="Musixmax" FontSize="Title" TextColor="{AppThemeBinding Dark={StaticResource DarkPrimaryTextColor},
+                                                                                Light={StaticResource LightPrimaryTextColor}}"
+                   HorizontalOptions="StartAndExpand" VerticalOptions="Center"
+                   VerticalTextAlignment="Center"/>
+
+            <Label Text="{x:Static icon:IconFont.Magnify}"
+                   Style="{StaticResource MaterialDesignIcon}"/>
+
+            <Label Text="{x:Static icon:IconFont.DotsVertical}"
+                   Style="{StaticResource MaterialDesignIcon}"
+                   Margin="0,0,9,0"/>
+
+        </StackLayout>
+        
+        <xct:TabView TabStripPlacement="Top"
+              IsTabStripVisible="True"
+              IsSwipeEnabled="False"
+              Grid.Row="2"
+              Grid.RowSpan="2">
+
+
+            <xct:TabViewItem Text="Tracks" TextColorSelected="{AppThemeBinding Dark={StaticResource DarkPrimaryTextColor},
+                                                                               Light={StaticResource LightPrimaryTextColor}}"
+                             TextColor="{AppThemeBinding Dark={StaticResource DarkSecondaryTextColor},
+                                                         Light={StaticResource LightSecondaryTextColor}}" 
+                             BindingContext="{x:Reference this}">
+                <xct:TabViewItem.Content>
+                    <pv:PancakeView CornerRadius="20,20,0,0">
+                        <StackLayout  BackgroundColor="{AppThemeBinding Dark={StaticResource DarkSecondaryBackgroundColor}, 
+                                                                        Light={StaticResource LightSecondaryBackgroundColor}}" >
+                            <CollectionView ItemsSource="{Binding Tracks}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <cc:TracksItempage Artist="Imagine Dragons" Title="Gold"/>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </StackLayout>
+                    </pv:PancakeView>
+                </xct:TabViewItem.Content>
+            </xct:TabViewItem>
+
+            <xct:TabViewItem Text="Albums" TextColorSelected="{AppThemeBinding Dark={StaticResource DarkPrimaryTextColor},
+                                                                               Light={StaticResource LightPrimaryTextColor}}"
+                             TextColor="{AppThemeBinding Dark={StaticResource DarkSecondaryTextColor}, 
+                                                         Light={StaticResource LightSecondaryTextColor}}" x:Name="this">
+                <xct:TabViewItem.Content>
+                    <pv:PancakeView CornerRadius="20,20,0,0" BackgroundColor="{AppThemeBinding Dark={StaticResource DarkSecondaryBackgroundColor}, 
+                                                                                               Light={StaticResource LightSecondaryBackgroundColor}}">
+
+
+                        <StackLayout  BackgroundColor="{AppThemeBinding Dark={StaticResource DarkSecondaryBackgroundColor}, 
+                                                Light={StaticResource LightSecondaryBackgroundColor}}" >
+                            <CollectionView ItemsSource="{Binding Albums}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <cc:AlbumsItempage AlbumArtiste="Amalee" AlbumName="Remixes" NumberOfTracks="30"/>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </StackLayout>
+
+                        <!--<Grid RowDefinitions="5, auto, auto, auto"
+                              ColumnDefinitions="5, auto, 50, auto"
+                              ColumnSpacing="10"
+                              RowSpacing="10">
+
+                            <StackLayout Grid.Row="1"
+                                         Grid.Column="1">
+                                <Image Source="cover" Aspect="AspectFit" HeightRequest="150" xct:CornerRadiusEffect.CornerRadius="30">
+                                </Image>
+                                <Label Text="Nom du dossier" TextColor="White" FontSize="17" HorizontalTextAlignment="Center"/>
+                                <Label Text="Artiste" TextColor="White" FontSize="15" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="1"
+                                         Grid.Column="3">
+                                <Image Source="cover" Aspect="AspectFit" HeightRequest="150" xct:CornerRadiusEffect.CornerRadius="30"/>
+                                <Label Text="Nom du dossier" TextColor="White" FontSize="17" HorizontalTextAlignment="Center"/>
+                                <Label Text="Artiste" TextColor="White" FontSize="15" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="2"
+                                         Grid.Column="1">
+                                <Image Source="cover" Aspect="AspectFit" HeightRequest="150" xct:CornerRadiusEffect.CornerRadius="30"/>
+                                <Label Text="Nom du dossier" TextColor="White" FontSize="17" HorizontalTextAlignment="Center"/>
+                                <Label Text="Artiste" TextColor="White" FontSize="15" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="2"
+                                         Grid.Column="3">
+                                <Image Source="cover" Aspect="AspectFit" HeightRequest="150" xct:CornerRadiusEffect.CornerRadius="30"/>
+                                <Label Text="Nom du dossier" TextColor="White" FontSize="17" HorizontalTextAlignment="Center"/>
+                                <Label Text="Artiste" TextColor="White" FontSize="15" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="3"
+                                         Grid.Column="1">
+                                <Image Source="cover" Aspect="AspectFit" HeightRequest="150" xct:CornerRadiusEffect.CornerRadius="30"/>
+                                <Label Text="Nom du dossier" TextColor="White" FontSize="17" HorizontalTextAlignment="Center"/>
+                                <Label Text="Artiste" TextColor="White" FontSize="15" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="3"
+                                         Grid.Column="3">
+                                <Image Source="cover" Aspect="AspectFit" HeightRequest="150" xct:CornerRadiusEffect.CornerRadius="30"/>
+                                <Label Text="Nom du dossier" TextColor="White" FontSize="17" HorizontalTextAlignment="Center"/>
+                                <Label Text="Artiste" TextColor="White" FontSize="15" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="3"
+                                         Grid.Column="3">
+                                <Image Source="cover" Aspect="AspectFit" HeightRequest="150" xct:CornerRadiusEffect.CornerRadius="30"/>
+                                <Label Text="Nom du dossier" TextColor="White" FontSize="17" HorizontalTextAlignment="Center"/>
+                                <Label Text="Artiste" TextColor="White" FontSize="15" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="3"
+                                         Grid.Column="3">
+                                <Image Source="cover" Aspect="AspectFit" HeightRequest="150" xct:CornerRadiusEffect.CornerRadius="30"/>
+                                <Label Text="Nom du dossier" TextColor="White" FontSize="17" HorizontalTextAlignment="Center"/>
+                                <Label Text="Artiste" TextColor="White" FontSize="15" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="3"
+                                         Grid.Column="3">
+                                <Image Source="cover" Aspect="AspectFit" HeightRequest="150" xct:CornerRadiusEffect.CornerRadius="30"/>
+                                <Label Text="Nom du dossier" TextColor="White" FontSize="17" HorizontalTextAlignment="Center"/>
+                                <Label Text="Artiste" TextColor="White" FontSize="15" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="3"
+                                         Grid.Column="3">
+                                <Image Source="cover" Aspect="AspectFit" HeightRequest="150" xct:CornerRadiusEffect.CornerRadius="30"/>
+                                <Label Text="Nom du dossier" TextColor="White" FontSize="17" HorizontalTextAlignment="Center"/>
+                                <Label Text="Artiste" TextColor="White" FontSize="15" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="3"
+                                Grid.Column="3">
+                                <Image Source="cover" Aspect="AspectFit" HeightRequest="150" xct:CornerRadiusEffect.CornerRadius="30"/>
+                                <Label Text="Nom du dossier" TextColor="White" FontSize="17" HorizontalTextAlignment="Center"/>
+                                <Label Text="Artiste" TextColor="White" FontSize="15" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="3"
+                                         Grid.Column="3">
+                                <Image Source="cover" Aspect="AspectFit" HeightRequest="150" xct:CornerRadiusEffect.CornerRadius="30"/>
+                                <Label Text="Nom du dossier" TextColor="White" FontSize="17" HorizontalTextAlignment="Center"/>
+                                <Label Text="Artiste" TextColor="White" FontSize="15" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+                        </Grid>-->
+                    </pv:PancakeView>
+                </xct:TabViewItem.Content>
+            </xct:TabViewItem>
+
+            <xct:TabViewItem Text="Folders" TextColorSelected="{AppThemeBinding Dark={StaticResource DarkTabFocusedTextColor},
+                                                                                Light={StaticResource LightPrimaryTextColor}}"
+                      TextColor="{AppThemeBinding Dark={StaticResource DarkSecondaryTextColor},
+                                                  Light={StaticResource LightSecondaryTextColor}}">
+                <xct:TabViewItem.Content>
+                    <pv:PancakeView CornerRadius="20,20,0,0" BackgroundColor="{AppThemeBinding Dark={StaticResource DarkSecondaryBackgroundColor}, 
+                                                                                                Light={StaticResource LightSecondaryBackgroundColor}}">
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal" HeightRequest="60" Margin="15,20,10,10">
+                                <Image Source="cover.png" Aspect="AspectFill" xct:CornerRadiusEffect.CornerRadius="5" 
+                                       HorizontalOptions="Start"/>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="Nom de Dossier" VerticalOptions="StartAndExpand"/>
+                                    <Label Text="Chemin du dossier" />
+                                </StackLayout>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal" HeightRequest="60" Margin="15,20,10,10">
+                                <Image Source="cover.png" Aspect="AspectFill" xct:CornerRadiusEffect.CornerRadius="5" 
+                                       HorizontalOptions="Start"/>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="Nom de Dossier" VerticalOptions="StartAndExpand"/>
+                                    <Label Text="Chemin du dossier" />
+                                </StackLayout>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal" HeightRequest="60" Margin="15,20,10,10">
+                                <Image Source="cover.png" Aspect="AspectFill" xct:CornerRadiusEffect.CornerRadius="5" 
+                                       HorizontalOptions="Start"/>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="Nom de Dossier" VerticalOptions="StartAndExpand"/>
+                                    <Label Text="" />
+                                </StackLayout>
+                            </StackLayout>
+
+
+                            <StackLayout Orientation="Horizontal" HeightRequest="60" Margin="15,20,10,10">
+                                <Image Source="cover.png" Aspect="AspectFill" xct:CornerRadiusEffect.CornerRadius="5" 
+                                       HorizontalOptions="Start"/>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="Nom de Dossier" VerticalOptions="StartAndExpand"/>
+                                    <Label Text="Chemin du dossier" />
+                                </StackLayout>
+                            </StackLayout>
+
+                        </StackLayout>
+                    </pv:PancakeView>
+                </xct:TabViewItem.Content>
+            </xct:TabViewItem>
+        </xct:TabView>
+    </Grid>
+   
+   
+
+    
+</ContentPage>

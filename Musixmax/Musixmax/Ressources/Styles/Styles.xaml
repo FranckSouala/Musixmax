@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xaml-comp compile="true"?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" 
+					xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+	<Style x:Key="MaterialDesignIcon" TargetType="Label">
+		<Setter Property="FontFamily" Value="mdi" />
+		<Setter Property="BackgroundColor" Value="Transparent" />
+		<Setter Property="FontSize" Value="20" />
+		<Setter Property="VerticalOptions" Value="Center" />
+		<Setter Property="VerticalTextAlignment" Value="Center"/>
+		<Setter Property="TextColor" Value="LightBlue"/>
+	</Style>
+
+	<Style x:Key="PrimaryLabelStyle" TargetType="Label">
+		<Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource DarkPrimaryTextColor}, Light={StaticResource LightPrimaryTextColor}}"/>
+		<Setter Property="FontSize" Value="20"/>
+	</Style>
+
+	<Style x:Key="SecondaryLabelStyle" TargetType="Label">
+		<Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource DarkSecondaryTextColor}, Light={StaticResource LightSecondaryTextColor}}"/>
+		<Setter Property="FontSize" Value="13"/>
+	</Style>
+</ResourceDictionary>

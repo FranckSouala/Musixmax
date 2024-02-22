@@ -17,44 +17,66 @@ namespace Musixmax.CustomControls
             InitializeComponent();
         }
 
+
         public string AlbumName
         {
-            get { return (string)GetValue(AlbumNameProperty); }
-            set { SetValue(AlbumNameProperty, value); }
+            get => (string)GetValue(AlbumNameProperty);
+            set => SetValue(AlbumNameProperty, value);
         }
 
         public static readonly BindableProperty AlbumNameProperty =
             BindableProperty.Create(
-                nameof(AlbumName),
-                typeof(string),
-                typeof(AlbumsItempage),
-                defaultValue: string.Empty,
+                declaringType: typeof(AlbumsItempage),
+                propertyName: nameof(AlbumName),
+                returnType: typeof(string),
+                defaultValue: String.Empty, 
                 defaultBindingMode: BindingMode.OneWay);
 
-        public string AlbumArtiste
+
+        public string AlbumArtist
         {
-            get { return (string)GetValue(AlbumTitleProperty); }
-            set { SetValue(AlbumTitleProperty, value); }
+            get => (string)GetValue(AlbumArtistProperty);
+            set => SetValue(AlbumArtistProperty, value);
         }
 
-        public static readonly BindableProperty AlbumTitleProperty =
-            BindableProperty.Create(nameof(AlbumArtiste),
-                typeof(string),
-                typeof(AlbumsItempage),
-                defaultValue: string.Empty,
+        public static readonly BindableProperty AlbumArtistProperty =
+            BindableProperty.Create(
+                declaringType: typeof(AlbumsItempage),
+                propertyName: nameof(AlbumArtist),
+                returnType: typeof(string),
+                defaultValue: String.Empty, 
                 defaultBindingMode: BindingMode.OneWay);
+
+
+
+        public string AlbumCoverImage
+        {
+            get => (string)GetValue(AlbumCoverImageProperty);
+            set => SetValue(AlbumCoverImageProperty, value);
+        }
+
+        public static readonly BindableProperty AlbumCoverImageProperty =
+            BindableProperty.Create(
+                declaringType: typeof(AlbumsItempage),
+                propertyName: nameof(AlbumCoverImage),
+                returnType: typeof(string),
+                defaultValue: "cover", 
+                defaultBindingMode: BindingMode.OneWay);
+
 
         public int NumberOfTracks
         {
-            get { return (int)GetValue(NumberOfTracksProperty); }
-            set { SetValue(NumberOfTracksProperty, value); }
+            get => (int)GetValue(NumberOfTracksProperty);
+            set => SetValue(NumberOfTracksProperty, value);
         }
 
         public static readonly BindableProperty NumberOfTracksProperty =
-            BindableProperty.Create(nameof(NumberOfTracks),
-                typeof(int),
-                typeof(AlbumsItempage),
+            BindableProperty.Create(
+                declaringType: typeof(AlbumsItempage),
+                propertyName: nameof(NumberOfTracks),
+                returnType: typeof(int),
                 defaultBindingMode: BindingMode.OneWay);
+
 
     }
 

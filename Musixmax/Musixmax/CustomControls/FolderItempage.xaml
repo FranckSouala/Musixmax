@@ -2,15 +2,34 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-             x:Class="Musixmax.CustomControls.FolderItempage">
+             x:Class="Musixmax.CustomControls.FolderItempage"
+             x:Name="this">
 
-        <StackLayout Orientation="Horizontal" HeightRequest="60" Margin="15,20,10,10">
-            <Image Source="cover.png" Aspect="AspectFill" xct:CornerRadiusEffect.CornerRadius="5" 
-                HorizontalOptions="Start"/>
-            <StackLayout Orientation="Vertical">
-                <Label Text="Nom de Dossier" VerticalOptions="StartAndExpand"/>
-                <Label Text="Chemin du dossier" />
-            </StackLayout>
-        </StackLayout>
+    <StackLayout BindingContext="{x:Reference this}">
+        <Frame HeightRequest="60"  BackgroundColor="{AppThemeBinding Dark={StaticResource DarkSecondaryBackgroundColor}, 
+                                                                  Light={StaticResource LightSecondaryBackgroundColor}}">
+            <Grid ColumnDefinitions="auto, 5, *, *"
+               RowSpacing="0.5">
+                <Image Grid.Column="0"
+                    Grid.Row="0"
+                    Grid.ColumnSpan="2"
+                    Aspect="AspectFill"
+                    HorizontalOptions="StartAndExpand"
+                    Source="{Binding FolderImage}"
+                    xct:CornerRadiusEffect.CornerRadius="20"/>
+
+                <StackLayout Orientation="Vertical" Grid.Column="2"
+                          Grid.ColumnSpan="2">
+                    <Label Text="{Binding Foldername}" 
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Start"
+                        Style="{StaticResource PrimaryLabelStyle}"/>
+                    <Label Text="{Binding FolderPath}" HorizontalTextAlignment="Start" 
+                        VerticalTextAlignment="End"
+                        Style="{StaticResource SecondaryLabelStyle}"/>
+                </StackLayout>
+            </Grid>
+        </Frame>
+    </StackLayout>
 
 </ContentView>

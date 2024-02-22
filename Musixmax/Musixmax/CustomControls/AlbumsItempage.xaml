@@ -6,27 +6,28 @@
              x:Name="this">
 
 
-    <Grid RowDefinitions="*"
-          ColumnDefinitions="*" 
-          BindingContext="{x:Reference this}">
 
-        <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal"
-                     Grid.ColumnSpan="3">
-            <Image Source="cover" Aspect="AspectFit" HeightRequest="150" xct:CornerRadiusEffect.CornerRadius="30">
-            </Image>
-            <Label x:Name="NamoOfAlbum" Text="{Binding AlbumName}" Style="{StaticResource PrimaryLabelStyle}"
-                   HorizontalOptions="Center"/>
-            <StackLayout Orientation="Horizontal">
-                <Label x:Name="AlbumArtist" Text="{Binding AlbumArtiste}" Style="{StaticResource SecondaryLabelStyle}" Margin="20,0,0,0"/>
-                <Label Text=""/>
-                <Label Text="|" Style="{StaticResource SecondaryLabelStyle}"/>
-                <Label Text=""/>
-                <Label Text="{Binding NumberOfTracks}" 
-                       Style="{StaticResource SecondaryLabelStyle}"
-                       VerticalOptions="Center"
-                       HorizontalOptions="Center"/>
+
+
+    <StackLayout BindingContext="{x:Reference this}" Margin="10,10">
+        <Image Source="{Binding AlbumCoverImage}" Aspect="AspectFit" xct:CornerRadiusEffect.CornerRadius="20"/>
+
+        <Label Text="{Binding AlbumName}" Style="{StaticResource AlbumPrimaryLabelStyle}"
+               HorizontalOptions="Center" VerticalOptions="Center"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding AlbumArtist}" Style="{StaticResource AlbumSecondaryLabelStyle}"/>
+                        <Span Text=" |" Style="{StaticResource SecondaryLabelStyle}"/>
+                        <Span Text=" "/>
+                        <Span Text="{Binding NumberOfTracks}" Style="{StaticResource AlbumSecondaryLabelStyle}"/>
+                        <Span Text=" morceaux" Style="{StaticResource AlbumSecondaryLabelStyle}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
             </StackLayout>
         </StackLayout>
         
-    </Grid>
+    
 </ContentView>

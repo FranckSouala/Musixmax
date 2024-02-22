@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -16,19 +12,23 @@ namespace Musixmax.CustomControls
         {
             InitializeComponent();
         }
+
+
+
         public string Artist
         {
-            get { return (string)GetValue(ArtistProperty); }
-            set { SetValue(ArtistProperty, value); }
+            get => (string)GetValue(ArtistProperty);
+            set => SetValue(ArtistProperty, value);
         }
 
         public static readonly BindableProperty ArtistProperty =
             BindableProperty.Create(
-                nameof(Artist),
-                typeof(string),
-                typeof(TracksItempage),
-                defaultValue: string.Empty,
+                declaringType: typeof(TracksItempage),
+                propertyName: nameof(Artist),
+                returnType: typeof(string),
+                defaultValue: String.Empty,
                 defaultBindingMode: BindingMode.OneWay);
+
 
         public string Title
         {
@@ -42,6 +42,23 @@ namespace Musixmax.CustomControls
                 typeof(TracksItempage),
                 defaultValue: string.Empty,
                 defaultBindingMode: BindingMode.OneWay);
+
+
+
+        public string ImageCover
+        {
+            get => (string)GetValue(ImageCoverProperty);
+            set => SetValue(ImageCoverProperty, value);
+        }
+
+        public static readonly BindableProperty ImageCoverProperty =
+            BindableProperty.Create(
+                declaringType: typeof(TracksItempage),
+                propertyName: nameof(ImageCover),
+                returnType: typeof(string),
+                defaultValue: "cover",
+                defaultBindingMode: BindingMode.OneWay);
+
 
     }
 }
